@@ -15,9 +15,7 @@ export class DefaultValidationPipe extends ValidationPipe {
             validationError: { target: false },
             transformOptions: { enableImplicitConversion: true },
             exceptionFactory: (errors: ValidationError[]) => {
-                const args = { param: [] as any, message: [] as any };
-                this._transformErrors(errors, args);
-                return new UnprocessableEntityException(args);
+                return new UnprocessableEntityException(errors);
             },
             ...overwriteDefaultOptions,
         });
@@ -29,24 +27,5 @@ export class DefaultValidationPipe extends ValidationPipe {
         }
 
         return await super.transform(value, metadata);
-    }
-
-    private _transformErrors(
-        errors: ValidationError[],
-        args: { param: any[]; message: any[] },
-        parentProperty = '',
-    ) {
-        for (const error of errors) {
-            const property = parentProperty
-                ? `${parentProperty}.${error.property}`
-                : error.property;
-            if (error.constraints) {
-                args.message.push(error.constraints);
-                args.param.push(property);
-            }
-            if (error.children && error.children.length > 0) {
-                this._transformErrors(error.children, args, property);
-            }
-        }
     }
 }
