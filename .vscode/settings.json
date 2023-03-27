@@ -5,6 +5,7 @@
         "IQAIR",
         "maincn",
         "mainus",
+        "timestamptz",
         "typeorm",
         "yassir"
     ]

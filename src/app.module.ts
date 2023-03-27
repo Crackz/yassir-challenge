@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { ScheduleModule } from '@nestjs/schedule';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import * as path from 'path';
 import { EnvironmentVariables } from './common/env/environment-variables';
@@ -27,6 +28,7 @@ import { AirQualityModule } from './modules/air-quality/air-quality.module';
             },
             inject: [ConfigService],
         }),
+        ScheduleModule.forRoot(),
         AirQualityModule,
     ],
 })

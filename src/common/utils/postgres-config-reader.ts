@@ -10,12 +10,14 @@ export class PostgresConfigurationReader {
 
     getConnectionOptions(): PostgresConnectionOptions {
         const shouldSynchronize = process.env.NODE_ENV !== NodeEnvironment.PRODUCTION;
-
         return {
             type: 'postgres',
             entities: ['dist/**/*.entity.js'],
             synchronize: shouldSynchronize,
-            ...this._dbConfig,
+            database: this._dbConfig.name,
+            username: this._dbConfig.username,
+            password: this._dbConfig.password,
+            host: this._dbConfig.host,
         };
     }
 

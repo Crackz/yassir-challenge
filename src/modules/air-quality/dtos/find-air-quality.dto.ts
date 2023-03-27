@@ -1,19 +1,19 @@
-import { IsDefined, IsLatitude, IsLongitude, IsString } from 'class-validator';
+import { IsDefined, IsLatitude, IsLongitude, IsNumber } from 'class-validator';
 
 export class FindAirQualityDto {
     /**
      * Latitude numerical value, within range [-90, 90].
      */
     @IsDefined()
-    @IsString()
+    @IsNumber()
     @IsLatitude()
-    lat: string;
+    lat: number;
 
     /**
      * Longitude numerical value, within range [-180, 180].
      */
     @IsDefined()
-    @IsString()
+    @IsNumber()
     @IsLongitude()
-    long: string;
+    long: number;
 }
