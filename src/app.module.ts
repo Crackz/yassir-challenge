@@ -5,6 +5,7 @@ import * as path from 'path';
 import { EnvironmentVariables } from './common/env/environment-variables';
 import { validateEnvironmentVariables } from './common/env/validation';
 import { PostgresConfigurationReader } from './common/utils/postgres-config-reader';
+import { AirQualityModule } from './modules/air-quality/air-quality.module';
 
 @Module({
     imports: [
@@ -26,6 +27,7 @@ import { PostgresConfigurationReader } from './common/utils/postgres-config-read
             },
             inject: [ConfigService],
         }),
+        AirQualityModule,
     ],
 })
 export class AppModule {}
