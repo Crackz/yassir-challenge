@@ -64,6 +64,10 @@ export class AirQualityService {
         }
     }
 
+    async create(createCityPollutionDto: CreateCityAirQualityDto): Promise<void> {
+        await this.airQualityRepository.insert(createCityPollutionDto);
+    }
+
     async findCityMostPollutionDate(cityName: string): Promise<FindCityMostPollutionDto> {
         const [airQuality] = await this.airQualityRepository.find({
             where: {
@@ -83,10 +87,6 @@ export class AirQualityService {
         return {
             mostPollutionDate: airQuality.createdAt,
         };
-    }
-
-    async create(createCityPollutionDto: CreateCityAirQualityDto): Promise<void> {
-        await this.airQualityRepository.insert(createCityPollutionDto);
     }
 
     @Cron(CronExpression.EVERY_MINUTE)

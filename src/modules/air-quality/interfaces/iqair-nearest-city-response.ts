@@ -4,8 +4,8 @@ export interface IQAIRNearestCitySuccessResponse {
         current: {
             pollution: {
                 ts: string;
-                aqius: string;
-                aqicn: string;
+                aqius: number;
+                aqicn: number;
                 mainus: string;
                 maincn: string;
             };

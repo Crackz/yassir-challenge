@@ -16,14 +16,14 @@ export class AirQuality {
     @Column()
     cityName: string;
 
-    @Column()
-    aqius: string;
-
     @Column({ type: 'timestamptz' })
     ts: Date;
 
     @Column()
-    aqicn: string;
+    aqius: number;
+
+    @Column()
+    aqicn: number;
 
     @Column()
     mainus: string;

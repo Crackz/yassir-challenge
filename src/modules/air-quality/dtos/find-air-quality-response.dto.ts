@@ -2,8 +2,8 @@ export class FindAirQualityResponseDto {
     Result: {
         Pollution: {
             ts: string;
-            aqius: string;
-            aqicn: string;
+            aqius: number;
+            aqicn: number;
             mainus: string;
             maincn: string;
         };

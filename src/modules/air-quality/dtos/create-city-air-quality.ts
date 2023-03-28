@@ -1,24 +1,24 @@
-import { IsDefined, IsString } from 'class-validator';
+import { IsDefined, IsNumber, IsString } from 'class-validator';
 
 export class CreateCityAirQualityDto {
     @IsString()
     @IsDefined()
     cityName: string;
 
-    /**
-     * Pollution Level The Higher The Worse
-     */
-    @IsString()
-    @IsDefined()
-    aqius: string;
-
     @IsString()
     @IsDefined()
     ts: string;
 
-    @IsString()
+    /**
+     * Pollution Level The Higher The Worse
+     */
+    @IsNumber()
     @IsDefined()
-    aqicn: string;
+    aqius: number;
+
+    @IsNumber()
+    @IsDefined()
+    aqicn: number;
 
     @IsString()
     @IsDefined()
