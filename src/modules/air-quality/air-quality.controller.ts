@@ -24,7 +24,9 @@ export class AirQualityController {
         description: `Could not find air quality for lat: {lat}, long: {long}`,
     })
     @Get()
-    async findAirQuality(@Query() findAirQualityDto: FindAirQualityDto) {
+    async findAirQuality(
+        @Query() findAirQualityDto: FindAirQualityDto,
+    ): Promise<FindAirQualityResponseDto> {
         return await this.airQualityService.find(findAirQualityDto);
     }
 
@@ -34,7 +36,7 @@ export class AirQualityController {
         description: `Couldn't find a city: {cityName} pollution data`,
     })
     @Get('/paris/most-pollution')
-    async findCityMostPollutionDate(): Promise<FindCityMostPollutionDto> {
+    async findParisMostPollutionDate(): Promise<FindCityMostPollutionDto> {
         return await this.airQualityService.findCityMostPollutionDate('Paris');
     }
 }
